@@ -1,11 +1,19 @@
+function getStyle(id, name) {
+  var element = document.getElementById(id);
+  return element.currentStyle? element.currentStyle[name]: 
+         window.getComputedStyle? window.getComputedStyle(element, null).getPropertyValue(name): null;
+}
+
 function showBBT() {
-  var x = document.getElementById('bbt');
+  var x = getStyle('bbt', 'display');
+  var show = document.getElementById('bbt');
   var but = document.getElementById('but_hob');
-  if (x.style.display === 'none') {
-      x.style.display = 'block';
+
+  if (x == 'none') {
+      show.style.display = 'block';
       but.value = "Click me to close";
   } else {
-      x.style.display = 'none';
+      show.style.display = 'none';
       but.value = "Click me to find out!";
   }
 }
